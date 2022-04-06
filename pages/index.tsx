@@ -10,11 +10,15 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
 
-        <textarea rows="10" cols="50" name="comment" placeholder="Enter your News here"></textarea>
+        <form>
+          <textarea rows="10" cols="50" name="comment" placeholder="Enter your News here"></textarea>
+          <p>OR</p>
+          <input type="file"
+            id="avatar" name="avatar"
+            accept="audio/mp3"></input>
+        </form>
 
 
-        <p>OR</p>
-        <button id="upload" >Upload</button>
         <br></br>
         <button id="predict" >Predict</button>
 
