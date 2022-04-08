@@ -1,9 +1,9 @@
-import Navbar from "./Navbar";
+import NavDrawer from "./NavDrawer";
 
 const Layout = () => {
     return (
         <div>
-            <Navbar />
+            <NavDrawer/>
         </div>
     );
 };

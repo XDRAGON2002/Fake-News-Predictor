@@ -1,32 +1,30 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { text } from 'stream/consumers'
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import styles from '../styles/Home.module.css'
+import NavDrawer from '../components/NavDrawer';
 
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
+      <NavDrawer></NavDrawer>
 
       <main className={styles.main}>
 
-        <form>
-          <textarea rows="10" cols="50" name="comment" placeholder="Enter your News here"></textarea>
-          <p>OR</p>
-          <input type="file"
-            id="avatar" name="avatar"
-            accept="audio/mp3"></input>
-        </form>
-
-
-        <br></br>
-        <button id="predict" >Predict</button>
+        <div className={styles.mainscreen}>
+          <div>
+            <form className={styles.inputscreen}>
+              <TextField id="outlined-multiline-static" label="Enter your News here" multiline rows={7} placeholder="Enter your News here" />
+              <p>OR</p>
+              <Button variant="contained" component="label">Upload File <input type="file" accept="audio/mp3" hidden/> </Button>
+            </form>
+          </div>
+          <br></br>
+          <Button variant="contained" className={styles.button}>Predict</Button>
+        </div>
 
       </main>
 
-      <footer className={styles.footer}>
-
-      </footer>
     </div>
   )
 }
