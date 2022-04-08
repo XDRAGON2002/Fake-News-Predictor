@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 import tensorflow as tf
-from transformers import AutoTokenizer 
+from transformers import AutoTokenizer
 
 # fake_df = pd.read_csv("./Fake.csv", sep=",")
 # fake_df.head()
@@ -42,11 +42,20 @@ model_name = "bert-base-cased"
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-tokens = tokenizer.encode_plus("hello world", max_length=max_length, truncation=True, padding="max_length", add_special_tokens=True, return_token_type_ids=False, return_attention_mask=True, return_tensors="tf")
+tokens = tokenizer.encode_plus(
+    "hello world",
+    max_length=max_length,
+    truncation=True,
+    padding="max_length",
+    add_special_tokens=True,
+    return_token_type_ids=False,
+    return_attention_mask=True,
+    return_tensors="tf",
+)
 
 tokens
 
-np.array(tokens['input_ids'])[0]
+np.array(tokens["input_ids"])[0]
 
 df["label"] = df["label"].apply(lambda x: 1 if x == "True" else 0)
 
@@ -57,7 +66,18 @@ df.head()
 all_tokens = []
 
 for idx, data in enumerate(df["title"]):
-  all_tokens.append(tokenizer.encode_plus(data, max_length=max_length, truncation=True, padding="max_length", add_special_tokens=True, return_token_type_ids=False, return_attention_mask=True, return_tensors="tf"))
+    all_tokens.append(
+        tokenizer.encode_plus(
+            data,
+            max_length=max_length,
+            truncation=True,
+            padding="max_length",
+            add_special_tokens=True,
+            return_token_type_ids=False,
+            return_attention_mask=True,
+            return_tensors="tf",
+        )
+    )
 
 len(all_tokens)
 
@@ -72,8 +92,8 @@ X_ids = []
 X_masks = []
 
 for tokens in all_tokens:
-  X_ids.append(np.array(tokens["input_ids"]))
-  X_masks.append(np.array(tokens["attention_mask"]))
+    X_ids.append(np.array(tokens["input_ids"]))
+    X_masks.append(np.array(tokens["attention_mask"]))
 
 X_ids = np.array(X_ids)
 X_masks = np.array(X_masks)
@@ -85,21 +105,22 @@ X_masks[:2]
 labels[:2]
 
 
-
-tf.config.list_physical_devices('GPU')
+tf.config.list_physical_devices("GPU")
 
 ds = tf.data.Dataset.from_tensor_slices((X_ids, X_masks, labels))
 
 for i in ds.take(1):
-  print(i)
+    print(i)
+
 
 def format_data(input_ids, masks, labels):
-  return {"input_ids": input_ids[0], "attention_mask": masks[0]}, labels
+    return {"input_ids": input_ids[0], "attention_mask": masks[0]}, labels
+
 
 ds = ds.map(format_data)
 
 for i in ds.take(1):
-  print(i)
+    print(i)
 
 ds = ds.shuffle(1000000).batch(32)
 
@@ -140,4 +161,3 @@ model.compile(optimizer=optimizer, loss=loss, metrics=[acc])
 history = model.fit(train_ds, validation_data=val_ds, epochs=2)
 
 model.save("model.h5")
-
