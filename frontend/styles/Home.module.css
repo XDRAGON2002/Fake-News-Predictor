@@ -3,6 +3,10 @@
   padding: 0 2rem;
 }
 
+.newsContainer {
+  background-color: #ede3ff;
+}
+
 .main {
 
   min-height: 100vh;
@@ -117,10 +121,12 @@
   margin-top: 20px;
   margin-left: 80px;
   background: #47008d;
+  width:900px;
+  border-radius: 0px 20px 20px 0px;
 }
 
 .articlelist {
-  color:white;
+  height:30px;
 }
 
 .articletitle {
