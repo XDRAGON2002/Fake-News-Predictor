@@ -1,5 +1,6 @@
 import News from "../pages/news";
 import Article from "./Article";
+import styles from '../styles/Home.module.css';
 import { useState, useEffect } from "react";
 
 const ArticlesList = () => {

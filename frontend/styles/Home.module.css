@@ -1,8 +1,10 @@
 .container {
+  background-color: #ede3ff;
   padding: 0 2rem;
 }
 
 .main {
+
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -57,12 +59,12 @@
   max-width: 800px;
 }
 
-.mainscreen{
+.mainscreen {
   display: flex;
 }
 
-.inputscreen{
-  flex:1;
+.inputscreen {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,11 +73,60 @@
 }
 
 .button {
+  padding: 20px;
+  margin: 20px 100px;
+  max-width: 110px;
+  max-height: 40px;
+  background: linear-gradient(to right, #b34cf5, #6f4cf5);
+}
+
+.p {
+  color: #7351f5;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.pbutton {
   margin: 100px;
   max-width: 110px;
   max-height: 40px;
+  background: linear-gradient(to right, #b34cf5, #6f4cf5);
 }
 
+.svg_icons {
+  transform: scale(1.6);
+  margin-top: 15px;
+}
+
+.textfield {
+  width: 350px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.listitem {
+  padding: 5px;
+  margin: 5px;
+}
+
+.drawer {
+  background: linear-gradient(to right, #890695, #4b0294) !important;
+}
+
+.article {
+  margin-top: 20px;
+  margin-left: 80px;
+  background: #47008d;
+}
+
+.articlelist {
+  color:white;
+}
+
+.articletitle {
+  color:white;
+  margin-left: 20px;
+}
 
 @media (max-width: 600px) {
   .grid {

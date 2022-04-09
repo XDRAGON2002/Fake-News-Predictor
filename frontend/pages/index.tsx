@@ -14,13 +14,13 @@ const Home: NextPage = () => {
         <div className={styles.mainscreen}>
           <div>
             <form className={styles.inputscreen}>
-              <TextField id="outlined-multiline-static" label="Enter your News here" multiline rows={7} placeholder="Enter your News here" />
-              <p>OR</p>
-              <Button variant="contained" component="label">Upload File <input type="file" accept="audio/mp3" hidden/> </Button>
+              <TextField id="outlined-multiline-static" className={styles.textfield} label="Enter your News here" multiline rows={7} placeholder="Enter your News here" />
+              <p className={styles.p}>OR</p>
+              <Button variant="contained" component="label" className={styles.button}>Upload<input type="file" accept="audio/mp3" hidden/> </Button>
             </form>
           </div>
           <br></br>
-          <Button variant="contained" className={styles.button}>Predict</Button>
+          <Button variant="contained" className={styles.pbutton}>Predict</Button>
         </div>
 
       </main>

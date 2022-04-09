@@ -1,14 +1,19 @@
 import Link from "next/link";
+import styles from '../styles/Home.module.css';
 
 const Article = ({ data }) => {
     console.log(data["url"]);
     return (
-        <div>
-            <span>{data["source"]["name"]}</span>
+        <div className={styles.article}>
+            {/* <span>{data["source"]["name"]}</span> */}
             <br />
-            <Link href={data["url"]}>
-                <span>{data["title"]}</span>
-            </Link>
+            <div className={styles.articlelist}>
+                <Link href={data["url"]}>
+                    <a>
+                        <span className={styles.articletitle}>{data["title"]}</span>
+                    </a>
+                </Link>
+            </div>
 
             <br />
             <br />
