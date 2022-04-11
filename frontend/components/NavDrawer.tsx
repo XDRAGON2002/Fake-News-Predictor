@@ -8,8 +8,8 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import styles from '../styles/Home.module.css';
-import {Message,InsertChart} from '@mui/icons-material';
-
+import {Message,Chat,InsertChart} from '@mui/icons-material';
+import Link from 'next/link';
 
 const drawerWidth = 80;
 
@@ -36,7 +36,9 @@ export default function NavDrawer() {
           {['Inbox', 'Starred'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <Message style={{ color: "white" }} className={styles.svg_icons}/> : <InsertChart style={{ color: "white" }} className={styles.svg_icons}/>}
+                
+                {index%2===0 && <Link href="/"><Chat style={{ color: "white" }} className={styles.svg_icons}/></Link>}
+                {index%2===1 && <Link href="/news"><InsertChart style={{ color: "white" }} className={styles.svg_icons}/></Link>}
               </ListItemIcon>
             </ListItem>
           ))}
