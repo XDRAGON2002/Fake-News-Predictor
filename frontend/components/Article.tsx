@@ -1,18 +1,18 @@
 import Link from "next/link";
 import styles from '../styles/Home.module.css';
 import { Typography, Button } from '@mui/material';
-
+import headlineFormatter from '../utils/headlineFormat';
 const Article = ({ data }) => {
-    const title = String(data["title"]).split("-")
-    console.log(title);
+    const title = headlineFormatter(String(data["title"]))
     return (
         <div className={styles.cont}>
             <div className={styles.article}>
                 <div>
                 <br />
                 <div >
-                    <Typography className={styles.articletitle}>{data["title"]}</Typography>
-                    <Link href={data["url"]}><Button className={styles.articlebutton} variant="contained">Read More...</Button></Link>
+                    <Typography gutterBottom variant="h5" className={styles.articletitle}>{title.headline}</Typography>
+                    <Typography className={styles.articletitle}>{title.author}</Typography>
+                    <a href={data["url"]}><Button className={styles.articlebutton} variant="contained">Read More...</Button></a>
                     
                 </div>
 

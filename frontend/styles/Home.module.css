@@ -118,7 +118,7 @@
 .article {
   margin-top: 20px;
   margin-left: 80px;
-  background: #47008d;
+  background: #47008f;
   width: 1200px;
   border-radius: 0px 20px 20px 0px;
   display: flex;
@@ -157,6 +157,7 @@
   color: white;
   margin-left: 20px;
   margin-right: 20px;
+  font-weight: 550;
 }
 
 .cont {
