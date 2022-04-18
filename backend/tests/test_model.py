@@ -42,4 +42,3 @@ def test_model(text, expected):
     value = int(np.argmax(result))
     assert value in [0, 1]
     assert value == expected
-    assert 1 == 2
