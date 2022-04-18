@@ -148,6 +148,8 @@
 .authenticitybutton {
   color: white;
   margin-top: 10px;
+  width:150px;
+  max-width:150px;
   cursor: default;
   margin-right: 20px;
   background: linear-gradient(to right, #0933f9, #c500ff);
@@ -156,8 +158,15 @@
 .articletitle {
   color: white;
   margin-left: 20px;
+  max-width: 950px;
   margin-right: 20px;
   font-weight: 550;
+}
+
+.predictionBox {
+  display: flex;
+  padding: 10px;
+  margin-top: 11vh;
 }
 
 .cont {
