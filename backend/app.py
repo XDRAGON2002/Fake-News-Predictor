@@ -22,7 +22,7 @@ model_name = "bert-base-cased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 bert = TFAutoModel.from_pretrained(model_name)
 model = keras.models.load_model(
-    "D:/MyPrograms/Projects/fake-news-predictor/Fake-News-Predictor/backend/model/model.h5", custom_objects={"TFBertModel": bert}
+    "/backend/model/model.h5", custom_objects={"TFBertModel": bert}
 )
 
 def format_data(input_ids, masks):
@@ -53,5 +53,3 @@ async def verify(request: Request):
     result = np.argmax(result)
     print(result)
     return {"data": int(result), "prob": float(prob)}
-    # return {"data": result}
-    # return {"data": "kabaad"}
