@@ -1,8 +1,8 @@
-import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
+import pandas as pd
 import seaborn as sns
 import tensorflow as tf
+from matplotlib import pyplot as plt
 from transformers import AutoTokenizer
 
 # fake_df = pd.read_csv("./Fake.csv", sep=",")

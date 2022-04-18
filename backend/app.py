@@ -1,8 +1,10 @@
-from fastapi import FastAPI, Request
-from transformers import AutoTokenizer, TFAutoModel
-from tensorflow import keras
+from typing import Dict, Union
+
 import numpy as np
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from tensorflow import keras
+from transformers import AutoTokenizer, TFAutoModel
 
 app = FastAPI()
 
@@ -16,28 +18,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-max_length = 30
-model_name = "bert-base-cased"
+max_length: int = 30
+model_name: str = "bert-base-cased"
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 bert = TFAutoModel.from_pretrained(model_name)
 model = keras.models.load_model(
-    "D:/MyPrograms/Projects/fake-news-predictor/Fake-News-Predictor/backend/model/model.h5", custom_objects={"TFBertModel": bert}
+    "/backend/model/model.h5", custom_objects={"TFBertModel": bert}
 )
-
-def format_data(input_ids, masks):
-  return {"input_ids": input_ids[0], "attention_mask": masks[0]}
 
 
 @app.get("/")
-async def fun():
+async def fun() -> Dict[str, str]:
     return {"data": "hello"}
 
 
 @app.post("/predict")
-async def verify(request: Request):
-    body = await request.json()
-    print(body["news_headline"])
+async def verify(request: Request) -> Dict[str, Union[int, float]]:
+    body: Dict[str, str] = await request.json()
     tokens = tokenizer.encode_plus(
         body["news_headline"],
         max_length=max_length,
@@ -49,9 +47,6 @@ async def verify(request: Request):
         return_tensors="tf",
     )
     result = model.predict([tokens["input_ids"], tokens["attention_mask"]])
-    prob = result[0][np.argmax(result)]
-    result = np.argmax(result)
-    print(result)
-    return {"data": int(result), "prob": float(prob)}
-    # return {"data": result}
-    # return {"data": "kabaad"}
+    prob: float = result[0][np.argmax(result)]
+    value: int = int(np.argmax(result))
+    return {"data": int(value), "prob": float(prob)}
