@@ -34,7 +34,7 @@ const Home: NextPage = () => {
 
         <div className={styles.mainscreen}>
           <div>
-            <form className={styles.inputscreen}>
+            <form className={styles.inputscreen} data-testid="form">
               <TextField id="outlined-multiline-static" onChange={handleTextChange} className={styles.textfield} label="Enter your News here" multiline rows={7} placeholder="Enter your News here" />
               <p className={styles.p}>OR</p>
               <Button variant="contained" component="label" className={styles.button}>Upload<input type="file" accept="audio/mp3" hidden/> </Button>
