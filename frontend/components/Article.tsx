@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { Typography, Button } from '@mui/material';
 import headlineFormatter from '../utils/headlineFormat';
+
 const Article = ({ data }) => {
 
     const [prob, setprob] = useState(0)
@@ -55,13 +56,13 @@ const Article = ({ data }) => {
         <div className={styles.cont}>
             <div className={styles.article}>
                 <div>
-                    <br />
-                    <div >
-                        <Typography gutterBottom variant="h5" className={styles.articletitle}>{title.headline}</Typography>
-                        <Typography className={styles.articletitle}>{title.author}</Typography>
-                        <a href={data["url"]}><Button className={styles.articlebutton} variant="contained">Read More...</Button></a>
-
-                    </div>
+                <br />
+                <div >
+                    <Typography gutterBottom variant="h5" className={styles.articletitle} data-testid="title">{title.headline}</Typography>
+                    <Typography className={styles.articletitle} data-testid="author">{title.author}</Typography>
+                    <a href={data["url"]}><Button className={styles.articlebutton} variant="contained" data-testid="read-more">Read More...</Button></a>
+                    
+                </div>
 
                     <br />
                     <br />

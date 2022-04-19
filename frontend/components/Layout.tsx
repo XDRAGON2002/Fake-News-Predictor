@@ -2,7 +2,7 @@ import NavDrawer from "./NavDrawer";
 
 const Layout = () => {
     return (
-        <div>
+        <div data-testid="layout">
             <NavDrawer/>
         </div>
     );
