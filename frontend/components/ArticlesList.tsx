@@ -1,6 +1,4 @@
-import News from "../pages/news";
 import Article from "./Article";
-import styles from '../styles/Home.module.css';
 import { useState, useEffect } from "react";
 
 const ArticlesList = () => {
@@ -15,9 +13,9 @@ const ArticlesList = () => {
     news_list();
   }, []);
   return (
-    <div>
+    <div data-testid="list">
       {message.map((news_article) => {
-        return <Article data={news_article} />;
+        return <Article data={news_article} data-testid="item"/>
       })}
     </div>
   );

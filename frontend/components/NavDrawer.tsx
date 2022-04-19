@@ -37,8 +37,8 @@ export default function NavDrawer() {
             <ListItem button key={text}>
               <ListItemIcon>
                 
-                {index%2===0 && <Link href="/"><Chat style={{ color: "white" }} className={styles.svg_icons}/></Link>}
-                {index%2===1 && <Link href="/news"><InsertChart style={{ color: "white" }} className={styles.svg_icons}/></Link>}
+                {index%2===0 && <Link href="/"><Chat style={{ color: "white" }} className={styles.svg_icons} data-testid="home"/></Link>}
+                {index%2===1 && <Link href="/news"><InsertChart style={{ color: "white" }} className={styles.svg_icons} data-testid="news"/></Link>}
               </ListItemIcon>
             </ListItem>
           ))}

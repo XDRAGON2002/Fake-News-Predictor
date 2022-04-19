@@ -24,7 +24,7 @@ model_name: str = "bert-base-cased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 bert = TFAutoModel.from_pretrained(model_name)
 model = keras.models.load_model(
-    "/backend/model/model.h5", custom_objects={"TFBertModel": bert}
+    "./model/model.h5", custom_objects={"TFBertModel": bert}
 )
 
 
